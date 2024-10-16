@@ -1,0 +1,67 @@
+class TodoCreateView(View):
+    def get(self,request,*args,**kwargs):
+        # form_instance=TodoForm
+        # qs=Todo.objects.all()
+        id=kwargs.get("pk")
+
+        todo_obj=Todo.objects.get(id=id)
+
+        form_instance-TodoForm(instance=todo_obj)
+    
+        return render(request,"todo_edit.html",{"form":form_instance,"data":qs})
+    
+    def post(self,request,*args,**kwargs):
+
+        id=kwargs.get("pk")
+
+        todo_obj=Todo.objects.get(id=id)
+
+        form_instance=TodoForm(instance=todo_obj,data=request.POST)
+
+        if form_instance.is_valid():
+            form_instance.save()
+            # print("todo list is created")
+            return redirect("todo-add")
+        
+        else:
+            return render(request,"todo_edit.html",{"form":form_instance})
+
+
+
+
+class IncomeCreatedView(View):
+
+    def get(self,request,*args,**kwargs):
+
+        form_instance=IncomeForm
+
+        qs=Income.objects.all()
+
+        return render(request,"income_add.html",{"form":form_instance,"data":qs})
+    
+    def post(self,request,*args,**kwargs):
+
+        form_instance=IncomeForm(request.POST)
+
+        if form_instance.is_valid():
+            form_instance.save()
+            print("income is created")
+            return redirect("income-add")
+        
+        else:
+            return render(request,"income_add.html",{"form":form_instance})
+        
+
+class IncomeUpdateView(View):
+
+    def get(self,request,*args,**kwargs):
+        id=kwargs.get("pk")
+        income_obj=Income.objects.get(id=id)
+        form_instance=IncomeForm(instance=income_obj,data=request.POST)
+
+        if form_instance.is_valid():
+            form_instance.save()
+            return redirect("income-add")
+
+        else:
+              

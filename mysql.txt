@@ -1,0 +1,54 @@
+mysql
+
+database:to store data
+relational db:it has a schema or table.these table has relation.Interact with db by using quries
+application:Mysql,progres,Sqllite,Mariya DB
+nonrelational dn:no schema or table.Application:Mongo Db
+
+quries:
+>show databases:list all db
+>create database db_name:create db
+>use db_name:to switch particular database
+>show tables:show table inside db
+>create table table_name(column dataype constraint,...)
+>desc table_name:to show table detailes
+>insert into table_name(title,year,lanugage,runtime)values('kgf'....)
+>select*from table_name:for listing all records * to select all
+>:update tb_name set value=124 where id=3:to update
+>delete from movie runtime 120: to delete A row
+
+crud
+--C:create
+--R:read select
+--U:update
+--D:delete
+
+aggregate function:max(),min(),avg(),sum(),count()
+
+
+datatypes:
+varchar(size)
+int
+bool
+float
+enum
+
+to create table:
+create table table_name(id int,title varchar size, year varchar(size),runtime int,language varchar(size));
+
+constarint:not null:to accept not null value
+unique:to avoid duplicates
+auto_increment:to increment automatically
+default
+normalization:to redundancy
+
+crmdb
+use crmdb
+Employee
+create table employee(
+id int auto_increment primary key,
+name varchar(200) not null,
+dept varchar(200),
+salary int,
+location varchar(200)
+);

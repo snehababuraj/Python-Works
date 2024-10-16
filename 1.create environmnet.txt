@@ -1,0 +1,27 @@
+1.create environmnet
+python-m virtualenv,env
+env\scripts\activate
+2.create new project
+django-admin startproject projectname
+
+3.create application
+python manage.py startapp myapp
+settings-installedapp-myapp
+
+4.create model
+
+class modelname(models.Model):
+eg:name=models.charfield(max_length=200)
+
+in cmd
+>python manage.py makemigrations
+>python manage.py migrate
+
+in myapp create new file>forms.py
+eg:class MobileForm(form.Forms):
+     name=forms.charfield
+
+
+
+Views:
+class 

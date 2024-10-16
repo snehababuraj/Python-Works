@@ -1,0 +1,29 @@
+Tell me about yourself.
+
+Answer: "I am Sneha Baburaj i recently completed my MSc in Bioinformatics from Union Christian College Aluva and am currently i completed my internship as a Python Django Full Stack Developer at Luminar Technolab. My academic and professional journey has instilled in me a strong foundation in technology and problem-solving. I'm passionate about helping others, which is why I'm eager to transition into an academic counseling role where I can guide students.
+
+Why do you want to be an academic counselor?
+
+Answer: "I believe that my technical background, combined with my desire to help others and love to communicate with other people, makes me well-suited for an academic counseling role. I’ve seen how challenging it can be for students to navigate their academic and career paths, especially in the rapidly evolving  industries. I want to use my experience to support students in making informed decisions that align with their passions and strengths."
+
+what are qualities of an academic counselor
+
+"I believe an effective academic counselor should possess a combination of empathy, strong communication skills, and problem-solving ability. Empathy is crucial because it allows the counselor to genuinely understand and connect with students, making them feel supported and heard. Strong communication skills, including active listening, are essential for conveying guidance clearly and understanding students' needs.
+Other important qualities include patience, especially when dealing with students who are uncertain or struggling, and cultural sensitivity, which ensures that the counselor respects and understands the diverse backgrounds of students
+
+Can you describe a time when you had to explain a complex concept to someone?
+
+Answer: "During my internship, I had to explain the concept of RESTful APIs to a colleague who was unfamiliar with web development. I broke down the concept into simple terms, using analogies and examples from everyday life. I also demonstrated how APIs work in practice by showing a small project I had worked on. By the end of our discussion, my colleague had a much clearer understanding, which helped them contribute more effectively to our project.
+
+
+How would you handle a student who is unsure about their career path?
+
+Answer: "I would start by having an open conversation with the student to understand their interests, strengths, and any concerns they have about their future. I’d also suggest career assessment tools or resources that could help them explore different fields. If they are interested in IT, I’d share my own experiences and guide them through the various opportunities in the tech industry. My goal would be to empower the student to make a decision that feels right for them."
+
+What would you do if a student came to you with concerns about a particular course?
+
+Answer: "I would first listen carefully to the student’s concerns to understand the specific challenges they’re facing. Then, I’d explore potential solutions, such as recommending study resources, suggesting alternative learning strategies, or connecting them with a peer tutor. If the issue is more about the course content or teaching style, I might advise the student on how to communicate their concerns to the instructor or explore other course options that might better suit their learning style."
+
+
+
+I solemnly declare that the information in this resume is true to the best of my knowledge and belief and i bear the responsibilities for the correctness of the above-mentioned particulars.

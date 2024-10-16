@@ -1,0 +1,8 @@
+print("FRONT END")
+print("HTLM")
+print("CSS")
+print("BOOTSTARP")
+print("JAVASCRIPT")
+print("BACK END")
+print("MYSQL")
+print("PYTHON")

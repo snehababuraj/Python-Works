@@ -1,0 +1,47 @@
+"Good [morning/afternoon],Thank you for the opportunity to introduce myself. I am Sneha Baburaj, and I come from Pathanamthitta. I hold an MSc in Bioinformatics from Union Christian College, Aluva, and have gained hands-on experience as a Python Django Full Stack Developer during my internship at Luminar Technolab. I have developed strong skills in Python and Django for backend development, while also working with frontend technologies such as React, HTML, CSS, and JavaScript. Additionally, I have a solid understanding of REST API integration and database management.
+
+During my internship, I had the opportunity to work on several impactful projects like service centre, mhub,Ecommerce.These projects not only strengthened my technical skills but also provided me with insights into creating scalable and user-friendly applications.
+
+I believe I am the right candidate for this role because of my strong technical background and the practical experience I gained during my internship. My ability to adapt quickly, solve problems effectively, and deliver high-quality solutions make me confident in my potential to contribute as a Python Developer. I am passionate about development and excited about the opportunity to bring my skills to your team
+
+
+
+The Service Management System is designed to help service centers manage and track vehicles during their service process. This application facilitates vehicle registration, service request creation, status tracking, and generates service-related reports. It provides an organized way to streamline operations in service centers, reducing errors and ensuring timely delivery of services.
+
+Technologies used  frontend is React , Backend is Django and Django rest frame work for building API.
+
+The database used is SQLite 3, which stores all the necessary records related to vehicles, service requests, and service statuses.
+
+The system is designed to different types of users such as Admins, Service staff and Customers.Service Staff have restricted access, allowing them to update the status of service requests, while Customers can track the status of their vehicles and view their service history.
+
+Version control for this project is managed using Git and GitHub, which helps developers collaborate effectively, maintain code quality, and track changes across different branches. GitHub also facilitates project management with issue tracking, pull requests, and code reviews
+
+The system performs CRUD (Create, Read, Update, Delete) operations on vehicles, service requests, and service statuses. For instance, Admins can create new vehicles and service requests, update service statuses as the work progresses, and generate reports for management purposes. Service Staff can update the status of services (e.g., from ‘in progress’ to ‘completed’), while Customers can track the progress of their vehicles.
+
+
+
+The Glow E-Commerce Website is an online platform  for selling skin care products.The website allows users to browse products, create accounts, log in, add items to their cart and favorites, place orders, and securely make payments. It includes essential CRUD (Create, Read, Update, Delete) operations, user authentication, and payment integration, making it a full-fledged e-commerce solution.
+
+The frontend of the website is built using HTML, CSS, and Bootstrap, offering a responsive and user-friendly interface. These technologies ensure that users can easily navigate the website, browse products, and manage their shopping cart and favorites on any device. The backend is powered by Django, which handles the business logic, user authentication, and data management. For communication between the frontend and backend, the project uses Django REST Framework (DRF) to create RESTful APIs that manage product listings, cart operations, and order processing.
+
+Customers: Can browse the product catalog, register for an account, log in, add items to the cart, place orders, and manage their favorite products.
+Admins: Have full access to manage product listings, view and process orders, and oversee the general website operations.
+
+
+The Employee Management System is a web application designed to manage employee records efficiently. This project allows the user to add, delete, edit, and view employee information, providing a simple yet effective solution for managing an organization's workforce. The project was developed using Django as the backend framework and Django REST Framework (DRF) for building APIs to handle CRUD operations.
+
+The frontend is not explicitly mentioned, but the system is primarily focused on the backend functionality of managing employee records. It stores employee information, such as name, designation, department, and contact details, in an SQLite3 database, which is lightweight and well-suited for this scale of an application. The Django ORM is used to interact with the SQLite3 database, simplifying data manipulation through Python code.
+
+The system supports two types of users:
+
+Admin Users: The admin user has full access to all functionalities of the system, including adding new employees, editing existing records, deleting employees, and viewing all employee details.
+HR/Manager Users: This type of user can access and view employee information but may have limited permissions for adding or deleting records.
+The project employs version control using Git, allowing for efficient management of code changes, collaboration, and tracking of development progress. The code is hosted on GitHub, which also helps in managing pull requests, reviewing changes, and handling issues efficiently.
+
+The CRUD operations are implemented as follows:
+
+Create: Admins can add new employees by entering relevant details into a form.
+Read: Users can view a list of all employees or search for specific employees by name or department.
+Update: Employee records can be edited if there are any updates or corrections needed.
+Delete: Admins can remove employees who are no longer part of the organization.
+The project uses Django REST Framework (DRF) to expose APIs for managing employee data. The APIs handle the interactions between the backend and frontend (or any potential external services) to manage the employee records through the backend system.

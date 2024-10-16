@@ -1,0 +1,34 @@
+html-hypertext markup language
+tags
+<html>  <openingtag>
+<head>
+<title>intro </title> 
+</head> </closingtag>
+<body>
+     <inline element>:<span></span>
+     <block element>:<h1....h6> border is from left to right
+                     
+</body>
+</html>
+
+
+unordered list:<ul>
+                 <li>.....</li>
+                 
+               </ul>
+
+orderedlist :<ol><li>...</li></ol>
+
+table:
+<table>
+<tr>....</tr>   :row
+<th>...</th>    :heading
+<tr>
+<td1....</td>
+</tr>
+</table>
+
+
+uneditable text :<label>
+input tag:to print text box
+<div>:used for grouping

@@ -1,0 +1,335 @@
+models
+
+from django.db import models
+class Employee(models.Model):
+
+    name=models.CharField(max_length=200)
+
+    department=models.CharField(max_length=200)
+
+    salary=models.PositiveIntegerField()
+
+    location=models.CharField(max_length=200)
+
+    email=models.EmailField(max_length=200)
+
+    address=models.CharField(max_length=200)
+
+    def __str__(self):
+
+        return self.name
+
+
+from django.views.generic import View
+from myapp.models import Employee
+from myapp.forms import Employeeform
+
+
+class EmployeeListView(View):
+    def get(self,request,*args,**kwargs):
+        qs=Employee.objects.all()
+        return render(request,"employee.html",{"data":qs})
+    
+class EmployeeCreateView(View):
+    def get(self,request,*args,**kwargs):
+        form_instance=Employeeform()
+        return render(request,"employee_add.html",{"form":form_instance})
+    
+    def post(self,request,*args,**kwargs):
+        form_instance=Employeeform(request.POST)
+
+        if form_instance.is_valid():
+            data=form_instance.cleaned_data
+
+        
+            Employee.objects.create(**data)
+            return redirect("employee-list")
+        else:
+            return render(request,"employee_add.html",{"form":form_instance})
+
+class EmployeeDetailView(View):
+    def get(self,request,*args,**kwargs):
+        id=kwargs.get("pk")
+        qs=Employee.objects.get(id=id)
+        return render(request,"employee_detail.html",{"data":qs})
+    
+class EmployeeDeleteView(View):
+
+    def get(self,request,*args,**kwargs):
+        id=kwargs.get("pk")
+        Employee.objects.get(id=id).delete()
+        return redirect("employee-list")
+
+class EmployeeUpdateView(View):
+
+    def get(self,request,*args,**kwargs):
+
+        id=kwargs.get("pk")
+
+        employee_object=Employee.objects.get(id=id)
+        dist={
+            "name":employee_object.name,
+            "department":employee_object.department,
+            "salary":employee_object.salary,
+            "location":employee_object.location,
+            "email":employee_object.email,
+            "address":employee_object.address
+    
+        }
+        form_instance=Employeeform(initial=dist)
+        return render(request,"employee_edit.html",{"form":form_instance})
+    
+
+    def post(self,request,*args,**kwargs):
+        form_instance=Employeeform(request.POST)
+        id=kwargs.get("pk")
+        if form_instance.is_valid():
+            data=form_instance.cleaned_data
+            Employee.objects.filter(id=id).update(**data)
+            return redirect("employee-list")
+        else:
+            return render(request,"employee_edit.html",{"form":form_instance})
+
+LIST.HTML
+{%extends 'base.html'%}
+{%block title_block%}
+<title>Employee-list</title>
+{%endblock%}
+{%block main_block%}
+<div class="container p-4 border shadow mt-5">
+    <h2 class="text-centre mb-4"><strong>Employee List</strong></h2>
+    <a href="{%url 'employee-create' %}" class="btn btn-success">AddNewEmployee</a>
+    <table class="table">
+        <tr>
+            <th>Name</th>
+            <th>Department</th>
+            <th>Salary</th>
+            <th>Location</th>
+            <th>Email</th>
+            <th>Address</th>
+        </tr>
+        {%for m in data%}
+        <tr>
+            <td>{{m.name}}</td>
+            <td>{{m.department}}</td>
+            <td>{{m.salary}}</td>
+            <td>{{m.location}}</td>
+            <td>{{m.email}}</td>
+            <td>{{m.address}}</td>
+            <td>
+                <a href="{%url 'employee-detail' m.id%}" class="btn btn-outline-primary">View</a>
+                <a href="{%url 'employee-delete' m.id%}" class="btn btn-outline-danger">Delete</a>
+                <a href="{%url 'employee-update' m.id%}" class="btn btn-outline-warning">edit</a>
+            </td>
+        </tr>
+
+        {%endfor%}
+    </table>
+
+
+</div>
+{%endblock%}
+
+ADD.HTML
+{%extends 'base.html'%}
+
+
+
+{%block title_block%}
+<title>Add-Employee</title>
+{%endblock%}
+
+
+{%block main_block%}
+
+<div class="container">
+    <form action="" method="post" class="w-50 p-4 mx-auto border rounded shadow">
+        <h3 class="text-center">Add New Employee</h3>
+        {%csrf_token%}
+
+        <div class="row mb-2">
+            <div class="col-6">
+                <label for="">Name</label>
+                {{form.name}}
+            </div>
+            <div class="col-6">
+                <label for="">Department</label>
+                {{form.department}}
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-6">
+                <label for="">Salary</label>
+                {{form.salary}}
+            </div>
+            <div class="col-6">
+                <label for="">Location</label>
+                {{form.location}}
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-6">
+                <label for="">Email</label>
+                {{form.email}}
+            </div>
+            <div class="col-6">
+                <label for="">Address</label>
+                {{form.address}}
+            </div>
+        </div>
+        
+
+        
+
+        <div class="row mt-3">
+            <div class="col-4"></div>
+            <div class="col-4">
+                <button type="submit" class="btn btn-outline-dark form-control " >add</button>
+
+            </div>
+            <div class="col-4"></div>
+        </div>
+
+        
+
+        
+
+
+    </form>
+</div>
+
+
+{%endblock%}
+
+
+DETAIL.HTML
+{%extends 'base.html'%}
+{%block title_block%}
+<title>Employee-detail</title>
+{%endblock%}
+{%block main_block%}
+<div class="container mt-5 d-flex justify-content-center">
+    <div class="card" style="width: 18rem;">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Name:{{data.name}}</li>
+          <li class="list-group-item">department:{{data.department}}</li>
+          <li class="list-group-item">salary:{{data.salary}}</li>
+          <li class="list-group-item">location:{{data.location}}</li>
+          <li class="list-group-item">email{{data.email}}</li>
+          <li class="list-group-item">address:{{data.address}}</li>
+        </ul>
+    </div>
+</div>
+
+{%endblock%}
+
+
+
+EDIT
+{%extends 'base.html'%}
+{%block title_block%}
+<title>Employee-edit</title>
+{%endblock%}
+{%block main_block%}
+<div class="container">
+    <form action="" method="post">
+
+        {%csrf_token%}
+
+        {{form.as_p}}
+        <button type="submit">add</button>
+
+
+    </form>
+</div>
+{%endblock%}
+
+
+BASE
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    {%block title_block%}
+
+    {%endblock%}
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Navbar</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Dropdown
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+              </li>
+            </ul>
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+      {%block main_block%}
+
+      {%endblock%}
+</body>
+</html>
+
+
+url
+
+
+from django.contrib import admin
+from django.urls import path
+from myapp import views
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('employee/all/',views.EmployeeListView.as_view(),name="employee-list"),
+    path("employee/add/",views.EmployeeCreateView.as_view(),name="employee-create"),
+    path("employee/<int:pk>/",views.EmployeeDetailView.as_view(),name="employee-detail"),
+    path("movies/<int:pk>/remove",views.EmployeeDeleteView.as_view(),name="employee-delete"),
+    path("movies/<int:pk>/change",views.EmployeeUpdateView.as_view(),name="employee-update")
+
+
+forms
+
+from django import forms
+class Employeeform(forms.Form):
+    
+    name=forms.CharField()
+
+    department=forms.CharField()
+
+    salary=forms.IntegerField()
+
+    location=forms.CharField()
+
+    email=forms.EmailField()
+
+    address=forms.CharField()

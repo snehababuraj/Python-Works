@@ -1,0 +1,16 @@
+<div class="container">
+    <h3>Expense Summary</h3>
+    <h3>Total Expense {{expense_total.total}}</h3>
+    <h3> Category Summary</h3>
+    {%for cs in category_summary%}
+
+    <p>{{cs.category}}:{{cs.total}}</p>
+
+    {%endfor%}
+    <h3>Priority Summary</h3>
+    {%for p in priority_summary%}
+
+    <p>{{p.priority}}:{{p.total}}</p>
+
+    {%endfor%}
+</div>
